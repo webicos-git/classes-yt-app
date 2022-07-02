@@ -10,7 +10,7 @@ export class WebRequestService {
   constructor(
     private http: HttpClient
   ) {
-    this.ROOT_URL = 'https://localhost:3000';
+    this.ROOT_URL = 'http://localhost:3000';
   }
 
   login(username: string, password: string) {
@@ -22,13 +22,15 @@ export class WebRequestService {
     });
   }
 
-  signup(name: string, username: string, email: string, contact: string, standard: string, password: string) {
-    return this.http.post(`${this.ROOT_URL}/users`, {
-      username,
-      password
-    }, {
+  signup(name: string, password: string,username: string,contact: string,email: string,standard:string) {
+    // console.log("Data,",data)
+    return this.http.post(`${this.ROOT_URL}/users`,{name,password,username,contact,email,standard}, {
       observe: 'response'
     });
+  }
+
+  getUsers() {
+    return this.http.get(`${this.ROOT_URL}/users`)
   }
 
 }

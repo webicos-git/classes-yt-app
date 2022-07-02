@@ -22,11 +22,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.authService.login(form.value.username, form.value.password).subscribe((res: HttpResponse<any>) => {
-      // if (res.status === 200) {
-      //   // we have logged in successfully
-      //   this.router.navigate(['/home']);
-      // }
-      console.log(res);
+      if (res.status === 200) {
+        // we have logged in successfully
+        if (res.body.isAdmin) {
+          this.router.navigate(['/home']);
+          }else{
+            this.router.navigate(['/student-home']); 
+          }
+      }
+      if (res.status === 400){
+        console.log(res)
+      }
+      
 
     });
     console.log(form.value.username, form.value.password)

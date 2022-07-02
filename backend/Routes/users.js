@@ -97,6 +97,8 @@ router.get('/', authenticate, (req, res,next) =>{
     // User sign up
 
     let body = req.body;
+
+    // console.log("BODY", body);
     // let isFalse=false;
     // if (body.hasOwnProperty('isAdmin')){
     //     isFalse=req.body['isAdmin'];
