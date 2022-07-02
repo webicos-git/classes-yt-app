@@ -21,6 +21,9 @@ import { HomeComponent } from './home/home.component';
 import { RegisterStudentComponent } from './register-student/register-student.component';
 import { MatTableModule } from '@angular/material/table';
 import { StudentHomeComponent } from './student-home/student-home.component';
+import { FormsModule } from '@angular/forms';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {WebReqInterceptor} from './shared/web-req.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,9 +49,11 @@ import { StudentHomeComponent } from './student-home/student-home.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,40 +1,70 @@
 <div class="container d-flex align-items-center justify-content-center register-student-wrapper">
   <mat-card class="my-5 form-card">
     <h1 class="text-center">Register Student</h1>
-    <form>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Enter Student Name">
+        <input
+          matInput
+          ngModel
+          name="name"
+          #nameField="ngModel"
+          placeholder="Enter Student Name">
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
-        <input matInput placeholder="Enter Student Username">
+        <input
+          matInput
+          ngModel
+          name="username"
+          #usernameField="ngModel"
+          placeholder="Enter Student Username">
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>E-mail</mat-label>
-        <input matInput placeholder="Enter Student E-mail">
+        <input
+          matInput
+          ngModel
+          name="email"
+          #emailField="ngModel"
+          placeholder="Enter Student E-mail">
         <mat-icon matSuffix>email</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Contact Number</mat-label>
-        <input matInput placeholder="Enter Student Phone No">
+        <input
+          matInput
+          ngModel
+          name="contact"
+          #contactField="ngModel"
+          placeholder="Enter Student Phone No">
         <mat-icon matSuffix>call</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Standard</mat-label>
-        <input matInput placeholder="Enter Student Standard">
+        <input
+          matInput
+          ngModel
+          name="standard"
+          #standardField="ngModel"
+          placeholder="Enter Student Standard">
         <mat-icon matSuffix>school</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput [type]="'password'">
+        <input
+          matInput
+          ngModel
+          name="password"
+          #passwordField="ngModel"
+          [type]="'password'">
         <mat-icon matSuffix>key</mat-icon>
       </mat-form-field>
 
