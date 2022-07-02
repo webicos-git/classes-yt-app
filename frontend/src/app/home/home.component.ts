@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 import { WebRequestService } from '../shared/web-request.service';
 
@@ -29,20 +30,35 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['srno', 'name', 'username', 'email', 'contact', 'standard'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  users:any=[];
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor(private webRequestService: WebRequestService,private authService: AuthService) { }
+  constructor(private webRequestService: WebRequestService,private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.webRequestService.getUsers().subscribe((res:any)=>{
-      console.log(res);
+      this.users = res;
+      var userId=this.authService.getUserId();
+      var user:any;
+      for (let i = 0; i < this.users.length; i++) {
+        if(this.users[i]['_id']==userId){
+          user=this.users[i];
+          break;
+        }
+      }
+      if(user['isAdmin']){
+        console.log("Admin True")
+      }
+      else{
+        this.router.navigate(['/student-home']);
+      }
     });
-    var userId=this.authService.getUserId();
-    console.log("UserId: " + userId);    
+    
+     
   }
 
 }
