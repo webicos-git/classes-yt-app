@@ -10,7 +10,14 @@ import {HttpResponse} from '@angular/common/http';
   styleUrls: ['./register-student.component.scss']
 })
 export class RegisterStudentComponent implements OnInit {
-
+  // body:Object[
+  //   {name:string,
+  //     password:string,
+  //     email:string,
+  //     username:string,
+  //     standard:string,
+  //     contact:string}
+  // ]
   constructor(
     private authService: AuthService,
     private router: Router
@@ -20,16 +27,9 @@ export class RegisterStudentComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.authService.signup(
-      form.value.name,
-      form.value.username,
-      form.value.email,
-      form.value.contact,
-      form.value.standard,
-      form.value.password,
-      ).subscribe((res: HttpResponse<any>) => {
-      console.log(res);
-      this.router.navigate(['/home']);
+    this.authService.signup(form.value.name, form.value.password,form.value.username, form.value.contact,form.value.email,form.value.standard).subscribe((res: HttpResponse<any>) => {
+      
+      this.router.navigate(['/login']);
     });
   }
 }

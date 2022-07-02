@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import { AuthService } from '../shared/auth.service';
+import { WebRequestService } from '../shared/web-request.service';
 
 export interface PeriodicElement {
   srno: number;
@@ -33,9 +35,14 @@ export class HomeComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor() { }
+  constructor(private webRequestService: WebRequestService,private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.webRequestService.getUsers().subscribe((res:any)=>{
+      console.log(res);
+    });
+    var userId=this.authService.getUserId();
+    console.log("UserId: " + userId);    
   }
 
 }
