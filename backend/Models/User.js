@@ -16,6 +16,16 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         unique: true
     },
+    email: {
+        type: String,
+        unique: true,
+    },
+    contact:{
+        type: String,
+        minlength: 10,
+        maxlength:10,
+        trim: true,
+    },
     name: {
         type: String,
         required: true,
@@ -122,9 +132,9 @@ UserSchema.statics.findByIdAndToken = function (_id, token) {
 }
 
 
-UserSchema.statics.findByCredentials = function (email, password) {
+UserSchema.statics.findByCredentials = function (username, password) {
     let User = this;
-    return User.findOne({ email }).then((user) => {
+    return User.findOne({ username }).then((user) => {
         if (!user) return Promise.reject();
 
         return new Promise((resolve, reject) => {
