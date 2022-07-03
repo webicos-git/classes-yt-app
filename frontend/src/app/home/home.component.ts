@@ -1,26 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 import { WebRequestService } from '../shared/web-request.service';
 
-export interface PeriodicElement {
-  srno: number;
-  name: string;
-  username: string;
-  email: string;
-  contact: number;
-  standard: number;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {srno: 1, name: 'hasan', username: 'Hasan123', email: 'hasan@gmail.com', contact: 9168745120, standard: 10},
-  {srno: 2, name: 'ash', username: 'Hasan123', email: 'hasan@gmail.com', contact: 9168745120, standard: 10},
-  {srno: 3, name: 'altu', username: 'Hasan123', email: 'hasan@gmail.com', contact: 9168745120, standard: 10},
-  {srno: 4, name: 'john', username: 'Hasan123', email: 'hasan@gmail.com', contact: 9168745120, standard: 10},
-  {srno: 5, name: 'jane', username: 'Hasan123', email: 'hasan@gmail.com', contact: 9168745120, standard: 10},
-  {srno: 6, name: 'jamie', username: 'Hasan123', email: 'hasan@gmail.com', contact: 9168745120, standard: 10},
-];
 
 @Component({
   selector: 'app-home',
@@ -28,14 +11,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  displayedColumns: string[] = ['srno', 'name', 'username', 'email', 'contact', 'standard'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
   users:any=[];
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
 
   constructor(private webRequestService: WebRequestService,private authService: AuthService, private router: Router) { }
 
@@ -47,18 +23,24 @@ export class HomeComponent implements OnInit {
       for (let i = 0; i < this.users.length; i++) {
         if(this.users[i]['_id']==userId){
           user=this.users[i];
-          break;
         }
       }
       if(user['isAdmin']){
-        console.log("Admin True")
+        // console.log("Admin True");
       }
       else{
         this.router.navigate(['/student-home']);
       }
     });
-    
-     
   }
 
+  deleteUser(id: string, name: string) {
+    if(confirm("Are you sure to delete "+name + "?")) {
+      return this.webRequestService.deleteUser(id).subscribe((res) => {
+        const userIndex = this.users.findIndex(u => u._id === id)
+        if (userIndex == -1) return
+        this.users.splice(userIndex, 1)
+      })
+    }
+  }
 }
