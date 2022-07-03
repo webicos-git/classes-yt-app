@@ -180,4 +180,14 @@ router.get('/', authenticate, (req, res,next) =>{
         res.status(400).send(e);
     });
 })
+
+/**
+ * Delete /users/:userId
+ * Purpose: Delete user and returns deleted user object
+ */
+router.delete('/:userId', authenticate, async (req, res)=>{
+    console.log(req.params.userId)
+   const post= await  User.findOneAndRemove({_id:req.params.userId});
+   res.json(post)
+})
 module.exports=router;
