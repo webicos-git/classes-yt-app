@@ -29,4 +29,7 @@ app.use(function (req, res, next) {
 const userRoutes = require('./Routes/users')
 app.use('/users',userRoutes);
 
+const videoRoutes = require('./Routes/videos')
+app.use('/videos',videoRoutes);
+
 app.listen(3000 ,()=>{console.log("Server listening on port 3000")});
