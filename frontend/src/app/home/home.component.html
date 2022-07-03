@@ -1,5 +1,9 @@
 <div class="container my-5">
   <button mat-raised-button color="primary" routerLink="/register-student">Register Student</button>
+  <button mat-raised-button color="warn" routerLink="/add-video" class="ms-3">
+    <mat-icon class="add-icon">add</mat-icon>
+    Add Video
+  </button>
 
 <!--  &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
   <h1 class="mt-4">Student List</h1>
@@ -17,20 +21,25 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users; let i = index">
+    <tr
+      *ngFor="let user of users; let i = index"
+      [class.table-success] = "user.isAdmin"
+    >
       <th scope="row">{{i +1}}</th>
-      <td>{{user.name}}</td>
-      <td>{{user.username}}</td>
-      <td>{{user.email}}</td>
-      <td>{{user.contact}}</td>
-      <td>{{user.standard}}</td>
+      <td [class.table-success] = "user.isAdmin">{{user.name}}</td>
+      <td [class.table-success] = "user.isAdmin">{{user.username}}</td>
+      <td [class.table-success] = "user.isAdmin">{{user.email}}</td>
+      <td [class.table-success] = "user.isAdmin">{{user.contact}}</td>
+      <td [class.table-success] = "user.isAdmin">{{user.standard}}</td>
       <td>
-        <mat-icon>delete</mat-icon>
+        <mat-icon
+          id="{{user._id}}"
+          *ngIf="!user.isAdmin"
+          [class.table-success] = "user.isAdmin"
+          (click)="deleteUser(user._id, user.name)"
+        >delete</mat-icon>
       </td>
     </tr>
     </tbody>
-
   </table>
-
-
 </div>

@@ -26,11 +26,21 @@ export class HomeComponent implements OnInit {
         }
       }
       if(user['isAdmin']){
-        console.log("Admin True")
+        // console.log("Admin True");
       }
       else{
         this.router.navigate(['/student-home']);
       }
     });
+  }
+
+  deleteUser(id: string, name: string) {
+    if(confirm("Are you sure to delete "+name + "?")) {
+      return this.webRequestService.deleteUser(id).subscribe((res) => {
+        const userIndex = this.users.findIndex(u => u._id === id)
+        if (userIndex == -1) return
+        this.users.splice(userIndex, 1)
+      })
+    }
   }
 }

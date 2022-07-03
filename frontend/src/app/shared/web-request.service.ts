@@ -33,4 +33,8 @@ export class WebRequestService {
     return this.http.get(`${this.ROOT_URL}/users`)
   }
 
+  deleteUser(id: string) {
+    return this.http.delete(`${this.ROOT_URL}/users/${id}`);
+  }
+
 }

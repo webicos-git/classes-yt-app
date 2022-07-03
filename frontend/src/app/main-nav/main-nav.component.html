@@ -27,10 +27,11 @@
       <span>Classes Name</span>
       <span class="spacer"></span>
       <div class="hide">
-        <a class="nav-link" routerLink="home">Home</a>
+        <a class="nav-link" routerLink="/home">Home</a>
         <a class="nav-link" routerLink="about-us">About Us</a>
         <a class="nav-link" href="#">Contact us</a>
-        <mat-icon>person</mat-icon>
+        <mat-icon *ngIf="!isLoggedIn" (click)="login()">login</mat-icon>
+        <mat-icon *ngIf="isLoggedIn" (click)="logout()">logout</mat-icon>
       </div>
     </mat-toolbar>
     <ng-content></ng-content>

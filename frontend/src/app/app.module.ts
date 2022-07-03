@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './login/login.component';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -24,6 +25,7 @@ import { StudentHomeComponent } from './student-home/student-home.component';
 import { FormsModule } from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {WebReqInterceptor} from './shared/web-req.interceptor';
+import { AddVideoComponent } from './add-video/add-video.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import {WebReqInterceptor} from './shared/web-req.interceptor';
     AboutUsComponent,
     HomeComponent,
     RegisterStudentComponent,
-    StudentHomeComponent
+    StudentHomeComponent,
+    AddVideoComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import {WebReqInterceptor} from './shared/web-req.interceptor';
     MatListModule,
     MatCardModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatInputModule,
     MatTableModule,
     FormsModule,
