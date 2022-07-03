@@ -6,3 +6,13 @@ table {
   font-size: 14px;
   width: 100%;
 }
+
+
+mat-icon {
+  cursor: pointer;
+  color: #ff4e4e;
+
+  &:hover {
+    color: #ff3636;
+  }
+}

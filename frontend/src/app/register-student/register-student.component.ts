@@ -28,8 +28,8 @@ export class RegisterStudentComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.authService.signup(form.value.name, form.value.password,form.value.username, form.value.contact,form.value.email,form.value.standard).subscribe((res: HttpResponse<any>) => {
-      
-      this.router.navigate(['/login']);
+
+      this.router.navigate(['/home']);
     });
   }
 }
