@@ -66,7 +66,7 @@ router.post('/',authenticate,(req, res) => {
     }
 });
 
-router.get('/', authenticate,(req, res,next) =>{
+router.get('/',authenticate,(req, res,next) =>{
     Video.find().then(function(users){
         res.json(users);
     }).catch(next);
@@ -86,6 +86,25 @@ router.delete('/:videoId', authenticate, async (req, res)=>{
     console.log(req.params.videoId)
    const video= await  Video.findOneAndRemove({_id:req.params.videoId});
    res.json(video)
+})
+
+
+router.patch('/:videoId',authenticate, async (req, res)=>{
+    try {
+   const updatedVideo= await Video.findOneAndUpdate({_id:req.params.videoId},{
+    $set: {title:req.body.title, 
+        description:req.body.description,
+        subject:req.body.subject,
+        teacher:req.body.teacher,
+        videolink:req.body.videolink,
+        duration:req.body.duration,
+        standard:req.body.standard,
+    }
+   })
+   res.json(updatedVideo);
+}catch(err){
+    res.send(err.message)
+}
 })
 
 module.exports=router;
