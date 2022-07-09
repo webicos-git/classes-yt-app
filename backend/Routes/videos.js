@@ -82,4 +82,10 @@ router.get('/:subject',authenticate, (req, res, next) =>{
 
 })
 
+router.delete('/:videoId', authenticate, async (req, res)=>{
+    console.log(req.params.videoId)
+   const video= await  Video.findOneAndRemove({_id:req.params.videoId});
+   res.json(video)
+})
+
 module.exports=router;
