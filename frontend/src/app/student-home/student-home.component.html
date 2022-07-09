@@ -1,43 +1,15 @@
 <div class="container my-5 d-flex align-items-center justify-content-center gap-5 flex-md-row flex-column flex-wrap">
-  <div class="card">
+  <div class="card" *ngFor="let video of videos">
     <div class="video-container" >
       <div class="video-foreground">
         <iframe
-          src="https://www.youtube.com/embed/NBNLxJM3fNo?showinfo=0&rel=0"
+          [src]="video.videolink"
           frameBorder="0" allowFullScreen>
         </iframe>
       </div>
     </div>
-    <h2>Topic name</h2>
-    <p>Teacher Name</p>
-    <p>length: 2 mins</p>
-  </div>
-
-  <div class="card">
-    <div class="video-container" >
-      <div class="video-foreground">
-        <iframe
-          src="https://www.youtube.com/embed/NBNLxJM3fNo?showinfo=0&rel=0"
-          frameBorder="0" allowFullScreen>
-        </iframe>
-      </div>
-    </div>
-    <h2>Topic name</h2>
-    <p>Teacher Name</p>
-    <p>length: 2 mins</p>
-  </div>
-
-  <div class="card">
-    <div class="video-container" >
-      <div class="video-foreground">
-        <iframe
-          src="https://www.youtube.com/embed/NBNLxJM3fNo?showinfo=0&rel=0"
-          frameBorder="0" allowFullScreen>
-        </iframe>
-      </div>
-    </div>
-    <h2>Topic name</h2>
-    <p>Teacher Name</p>
-    <p>length: 2 mins</p>
+          <h2>Title: {{video.title}}</h2>
+    <p>Teacher: {{video.teacher}}</p>
+    <p>length: {{video.duration}} mins</p>
   </div>
 </div>
