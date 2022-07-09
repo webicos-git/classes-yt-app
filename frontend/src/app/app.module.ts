@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {WebReqInterceptor} from './shared/web-req.interceptor';
 import { AddVideoComponent } from './add-video/add-video.component';
+import { ManageVideosComponent } from './manage-videos/manage-videos.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddVideoComponent } from './add-video/add-video.component';
     HomeComponent,
     RegisterStudentComponent,
     StudentHomeComponent,
-    AddVideoComponent
+    AddVideoComponent,
+    ManageVideosComponent
   ],
   imports: [
     BrowserModule,
