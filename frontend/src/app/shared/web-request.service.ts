@@ -37,4 +37,8 @@ export class WebRequestService {
     return this.http.delete(`${this.ROOT_URL}/users/${id}`);
   }
 
+  getVideos() {
+    return this.http.get(`${this.ROOT_URL}/videos`);
+  }
+
 }
