@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {WebRequestService} from '../shared/web-request.service';
+import {Router} from '@angular/router';
 
 interface Subject {
   value: string;
@@ -14,7 +16,10 @@ interface Subject {
 export class AddVideoComponent implements OnInit {
   selectedValue: string;
 
-  constructor() { }
+  constructor(
+    private webRequestService: WebRequestService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -28,7 +33,9 @@ export class AddVideoComponent implements OnInit {
   ];
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
+    this.webRequestService.addVideo(form.value).subscribe((res) => {
+      this.router.navigateByUrl('/student-home')
+    })
   }
 
 }

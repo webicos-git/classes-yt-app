@@ -10,14 +10,8 @@ import {HttpResponse} from '@angular/common/http';
   styleUrls: ['./register-student.component.scss']
 })
 export class RegisterStudentComponent implements OnInit {
-  // body:Object[
-  //   {name:string,
-  //     password:string,
-  //     email:string,
-  //     username:string,
-  //     standard:string,
-  //     contact:string}
-  // ]
+  showValidationErrors: boolean
+
   constructor(
     private authService: AuthService,
     private router: Router

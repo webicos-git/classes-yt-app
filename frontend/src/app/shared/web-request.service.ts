@@ -41,4 +41,8 @@ export class WebRequestService {
     return this.http.get(`${this.ROOT_URL}/videos`);
   }
 
+  addVideo(payload: Object) {
+    return this.http.post(`${this.ROOT_URL}/videos`, payload);
+  }
+
 }

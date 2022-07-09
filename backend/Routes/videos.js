@@ -30,7 +30,7 @@ router.post('/',authenticate,(req, res) => {
     // Add Video
     let body = req.body;
 
-    // console.log("BODY", body);
+    console.log("BODY", body);
     // let isFalse=false;
     // if (body.hasOwnProperty('isAdmin')){
     //     isFalse=req.body['isAdmin'];
