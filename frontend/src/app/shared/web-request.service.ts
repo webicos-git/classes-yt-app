@@ -45,4 +45,8 @@ export class WebRequestService {
     return this.http.post(`${this.ROOT_URL}/videos`, payload);
   }
 
+  deleteVideo(id: string) {
+    return this.http.delete(`${this.ROOT_URL}/videos/${id}`);
+  }
+
 }

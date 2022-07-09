@@ -6,6 +6,7 @@ import {HomeComponent} from './home/home.component';
 import {RegisterStudentComponent} from './register-student/register-student.component';
 import { StudentHomeComponent } from './student-home/student-home.component';
 import {AddVideoComponent} from './add-video/add-video.component';
+import {ManageVideosComponent} from './manage-videos/manage-videos.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'register-student', component: RegisterStudentComponent},
   {path: 'student-home', component: StudentHomeComponent},
   {path: 'add-video', component: AddVideoComponent},
+  {path: 'manage-videos', component: ManageVideosComponent},
 ];
 
 @NgModule({
