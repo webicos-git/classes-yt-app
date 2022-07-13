@@ -27,6 +27,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {WebReqInterceptor} from './shared/web-req.interceptor';
 import { AddVideoComponent } from './add-video/add-video.component';
 import { ManageVideosComponent } from './manage-videos/manage-videos.component';
+import { EditVideoComponent } from './edit-video/edit-video.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ManageVideosComponent } from './manage-videos/manage-videos.component';
     RegisterStudentComponent,
     StudentHomeComponent,
     AddVideoComponent,
-    ManageVideosComponent
+    ManageVideosComponent,
+    EditVideoComponent
   ],
   imports: [
     BrowserModule,
