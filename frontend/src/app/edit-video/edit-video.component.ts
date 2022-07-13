@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {WebRequestService} from '../shared/web-request.service';
-import {Router} from '@angular/router';
 
 interface Subject {
   value: string;
@@ -9,17 +7,14 @@ interface Subject {
 }
 
 @Component({
-  selector: 'app-add-video',
-  templateUrl: './add-video.component.html',
-  styleUrls: ['./add-video.component.scss']
+  selector: 'app-edit-video',
+  templateUrl: './edit-video.component.html',
+  styleUrls: ['./edit-video.component.scss']
 })
-export class AddVideoComponent implements OnInit {
+export class EditVideoComponent implements OnInit {
   selectedValue: string;
 
-  constructor(
-    private webRequestService: WebRequestService,
-    private router: Router
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -33,9 +28,7 @@ export class AddVideoComponent implements OnInit {
   ];
 
   onSubmit(form: NgForm) {
-    this.webRequestService.addVideo(form.value).subscribe((res) => {
-      this.router.navigateByUrl('/manage-videos')
-    })
+    console.log(form.value)
   }
 
 }

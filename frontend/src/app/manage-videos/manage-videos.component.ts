@@ -53,7 +53,6 @@ export class ManageVideosComponent implements OnInit {
         const videoIndex = this.videos.findIndex(v => v._id === id)
         if (videoIndex == -1) return
         this.videos.splice(videoIndex, 1)
-        console.log(res)
       })
     }
   }
