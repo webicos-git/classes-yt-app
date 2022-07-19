@@ -1,5 +1,5 @@
 # Create image based on the official Node image from dockerhub
-FROM node:carbon as builder
+FROM node
 #FROM node
 # Create a directory where our app will be placed
 RUN mkdir -p /usr/src/app
