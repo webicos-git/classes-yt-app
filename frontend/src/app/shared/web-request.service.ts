@@ -12,7 +12,6 @@ export class WebRequestService {
   ) {
     this.ROOT_URL = 'http://localhost:3000';
   }
-
   login(username: string, password: string) {
     return this.http.post(`${this.ROOT_URL}/users/login`, {
       username,
