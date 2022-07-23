@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { Location } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,10 @@ export class WebRequestService {
 
   constructor(
     private http: HttpClient
-  ) {
-    this.ROOT_URL = 'http://localhost:3000';
+  ) 
+  {
+    console.log("Host",window.location.hostname)
+    this.ROOT_URL = `http://${window.location.hostname}:3000`;
   }
   login(username: string, password: string) {
     return this.http.post(`${this.ROOT_URL}/users/login`, {
