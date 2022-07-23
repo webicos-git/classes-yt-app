@@ -31,7 +31,11 @@ const VideoSchema = new mongoose.Schema({
      standard:{
         type:Number,
         required:true
+    },
+    stream:{
+        type:String,
     }
+
 });
 
 

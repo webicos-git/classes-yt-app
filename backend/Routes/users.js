@@ -114,7 +114,8 @@ router.get('/', authenticate, (req, res,next) =>{
         isAdmin:body.isAdmin,
         standard:body.standard,
         contact:body.contact,
-        email:body.email
+        email:body.email,
+        stream:body.stream
     });
     try{
     newUser.save(function(err,result){

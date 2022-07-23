@@ -52,6 +52,10 @@ const UserSchema = new mongoose.Schema({
      standard:{
         type:String,
         default: null
+    },
+    stream:{
+        type:String,
+        default: null
     }
 });
 
