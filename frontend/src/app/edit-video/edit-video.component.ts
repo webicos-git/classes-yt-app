@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 interface Subject {
   value: string;
@@ -14,9 +15,15 @@ interface Subject {
 export class EditVideoComponent implements OnInit {
   selectedValue: string;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      const videoId =paramMap.get('id');
+      console.log(videoId);
+    })
   }
 
   subjects: Subject[] = [
