@@ -72,6 +72,15 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
+        <mat-label>Select Stream</mat-label>
+        <mat-select [(ngModel)]="selectedStreamValue" name="stream">
+          <mat-option *ngFor="let stream of streams" [value]="stream.value">
+            {{stream.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input
           matInput

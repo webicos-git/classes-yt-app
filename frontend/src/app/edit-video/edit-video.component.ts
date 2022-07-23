@@ -8,6 +8,11 @@ interface Subject {
   viewValue: string;
 }
 
+interface Streams {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-edit-video',
   templateUrl: './edit-video.component.html',
@@ -40,10 +45,16 @@ export class EditVideoComponent implements OnInit {
     {value: 'science', viewValue: 'Science'},
   ];
 
+  streams: Streams[] = [
+    {value: 'arts', viewValue: 'Arts'},
+    {value: 'commerce', viewValue: 'Commerce'},
+    {value: 'science', viewValue: 'Science'}
+  ];
+
   onSubmit(form: NgForm) {
     this.webRequestService.updateVideo(form.value, this.videoid).subscribe((res) => {
       this.router.navigateByUrl('manage-videos');
-    })
+    });
   }
 
 }
