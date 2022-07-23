@@ -29,7 +29,9 @@
       <th scope="col">E-mail</th>
       <th scope="col">Contact</th>
       <th scope="col">Standard</th>
+      <th scope="col">Stream</th>
       <th scope="col">Actions</th>
+
     </tr>
     </thead>
     <tbody>
@@ -43,6 +45,7 @@
       <td [class.table-success] = "user.isAdmin">{{user.email}}</td>
       <td [class.table-success] = "user.isAdmin">{{user.contact}}</td>
       <td [class.table-success] = "user.isAdmin">{{user.standard}}</td>
+      <td [class.table-success] = "user.isAdmin">{{user.stream}}</td>
       <td>
         <mat-icon
           id="{{user._id}}"
