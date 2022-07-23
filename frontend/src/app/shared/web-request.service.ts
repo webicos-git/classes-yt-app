@@ -21,6 +21,8 @@ export class WebRequestService {
     });
   }
 
+
+  
   signup(name: string, password: string,username: string,contact: string,email: string,standard:string) {
     // console.log("Data,",data)
     return this.http.post(`${this.ROOT_URL}/users`,{name,password,username,contact,email,standard}, {
