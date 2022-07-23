@@ -11,11 +11,12 @@ export class WebRequestService {
 
   constructor(
     private http: HttpClient
-  ) 
+  )
   {
     console.log("Host",window.location.hostname)
     this.ROOT_URL = `http://${window.location.hostname}:3000`;
   }
+
   login(username: string, password: string) {
     return this.http.post(`${this.ROOT_URL}/users/login`, {
       username,
@@ -26,7 +27,7 @@ export class WebRequestService {
   }
 
 
-  
+
   signup(name: string, password: string,username: string,contact: string,email: string,standard:string) {
     // console.log("Data,",data)
     return this.http.post(`${this.ROOT_URL}/users`,{name,password,username,contact,email,standard}, {
@@ -52,6 +53,14 @@ export class WebRequestService {
 
   deleteVideo(id: string) {
     return this.http.delete(`${this.ROOT_URL}/videos/${id}`);
+  }
+
+  getVideo(id: string) {
+    return this.http.get(`${this.ROOT_URL}/videos/video/${id}`);
+  }
+
+  updateVideo(payload: Object, id: string) {
+    return this.http.patch(`${this.ROOT_URL}/videos/${id}`, payload);
   }
 
 }

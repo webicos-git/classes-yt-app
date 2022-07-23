@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {WebRequestService} from '../shared/web-request.service';
 
 interface Subject {
   value: string;
@@ -13,16 +14,21 @@ interface Subject {
   styleUrls: ['./edit-video.component.scss']
 })
 export class EditVideoComponent implements OnInit {
-  selectedValue: string;
+  videoData: any
+  videoid: string
 
   constructor(
-    private route: ActivatedRoute
+    private webRequestService: WebRequestService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      const videoId =paramMap.get('id');
-      console.log(videoId);
+      this.videoid =paramMap.get('id');
+      this.webRequestService.getVideo(this.videoid).subscribe((res) => {
+        this.videoData = res[0];
+      });
     })
   }
 
@@ -35,7 +41,9 @@ export class EditVideoComponent implements OnInit {
   ];
 
   onSubmit(form: NgForm) {
-    console.log(form.value)
+    this.webRequestService.updateVideo(form.value, this.videoid).subscribe((res) => {
+      this.router.navigateByUrl('manage-videos');
+    })
   }
 
 }

@@ -5,6 +5,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Title</mat-label>
         <input
+          [ngModel]="videoData.title"
           matInput
           ngModel
           type="text"
@@ -18,7 +19,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Select Subject</mat-label>
-        <mat-select [(ngModel)]="selectedValue" name="subject">
+        <mat-select [(ngModel)]="videoData.subject" name="subject">
           <mat-option *ngFor="let subject of subjects" [value]="subject.value">
             {{subject.viewValue}}
           </mat-option>
@@ -28,6 +29,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Teacher</mat-label>
         <input
+          [ngModel]="videoData.teacher"
           matInput
           ngModel
           type="text"
@@ -42,6 +44,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Duration</mat-label>
         <input
+          [ngModel]="videoData.duration"
           matInput
           ngModel
           type="number"
@@ -56,6 +59,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Video Link</mat-label>
         <input
+          [ngModel]="videoData.videolink"
           type="url"
           matInput
           ngModel
@@ -70,6 +74,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <input
+          [ngModel]="videoData.description"
           matInput
           ngModel
           type="text"
@@ -84,6 +89,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Standard</mat-label>
         <input
+          [ngModel]="videoData.standard"
           matInput
           ngModel
           name="standard"

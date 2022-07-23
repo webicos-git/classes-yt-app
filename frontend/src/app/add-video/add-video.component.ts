@@ -8,6 +8,11 @@ interface Subject {
   viewValue: string;
 }
 
+interface Streams {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-add-video',
   templateUrl: './add-video.component.html',
@@ -15,6 +20,7 @@ interface Subject {
 })
 export class AddVideoComponent implements OnInit {
   selectedValue: string;
+  selectedStreamValue: string;
 
   constructor(
     private webRequestService: WebRequestService,
@@ -30,6 +36,12 @@ export class AddVideoComponent implements OnInit {
     {value: 'english', viewValue: 'English'},
     {value: 'math', viewValue: 'Math'},
     {value: 'science', viewValue: 'Science'},
+  ];
+
+  streams: Streams[] = [
+    {value: 'arts', viewValue: 'Arts'},
+    {value: 'commerce', viewValue: 'Commerce'},
+    {value: 'science', viewValue: 'Science'}
   ];
 
   onSubmit(form: NgForm) {
