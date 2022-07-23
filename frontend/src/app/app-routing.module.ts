@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'register-student', component: RegisterStudentComponent},
   {path: 'student-home', component: StudentHomeComponent},
   {path: 'add-video', component: AddVideoComponent},
-  {path: 'edit-video', component: EditVideoComponent},
+  {path: 'edit-video/:id', component: EditVideoComponent},
   {path: 'manage-videos', component: ManageVideosComponent},
 ];
 

@@ -57,4 +57,9 @@ export class ManageVideosComponent implements OnInit {
     }
   }
 
+  editVideo(id: string) {
+    this.router.navigate(['/edit-video', id]);
+  }
+
+
 }
