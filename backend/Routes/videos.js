@@ -66,7 +66,7 @@ router.post('/',authenticate,(req, res) => {
     }
 });
 
-router.get('/',authenticate,(req, res,next) =>{
+router.get('/',(req, res,next) =>{
     Video.find().then(function(users){
         res.json(users);
     }).catch(next);
@@ -80,6 +80,13 @@ router.get('/:subject',authenticate, (req, res, next) =>{
         res.json(result);
     })
 
+})
+router.get('/video/:videoId', (req, res, next) =>{
+    console.log("In Videos/VideoId")
+    let videos=Video.find({$or:[{_id:req.params.videoId}]}).then(function(result){
+        console.log(result);
+        res.json(result);
+    })
 })
 
 router.delete('/:videoId', authenticate, async (req, res)=>{
