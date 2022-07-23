@@ -81,6 +81,13 @@ router.get('/:subject',authenticate, (req, res, next) =>{
     })
 
 })
+router.get('/video/:videoId',authenticate, (req, res, next) =>{
+    console.log("In Videos/VideoId")
+    let videos=Video.find({$or:[{_id:req.params.videoId}]}).then(function(result){
+        console.log(result);
+        res.json(result);
+    })
+})
 
 router.delete('/:videoId', authenticate, async (req, res)=>{
     console.log(req.params.videoId)
