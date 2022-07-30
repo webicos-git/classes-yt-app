@@ -163,7 +163,7 @@ router.get('/', authenticate, (req, res,next) =>{
         })
     }).catch((e) => {
         console.log(e)
-        res.status(400).send("login failed");
+        res.status(400).send("Invalid Credentials. Please try again.");
     });
 })
 
