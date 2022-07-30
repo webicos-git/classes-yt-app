@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
         }
       }
       if(user['isAdmin']){
-        console.log("Admin True")
         this.router.navigate(['/home']);
       }
       else{
@@ -47,16 +46,9 @@ export class LoginComponent implements OnInit {
         if (res.body.isAdmin) {
           this.router.navigate(['/home']);
           }else{
-            this.router.navigate(['/student-home']); 
+            this.router.navigate(['/student']);
           }
       }
-      if (res.status === 400){
-        console.log(res)
-      }
-      
-
     });
-    console.log(form.value.username, form.value.password)
   }
-
 }

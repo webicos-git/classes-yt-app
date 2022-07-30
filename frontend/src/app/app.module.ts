@@ -28,6 +28,9 @@ import {WebReqInterceptor} from './shared/web-req.interceptor';
 import { AddVideoComponent } from './add-video/add-video.component';
 import { ManageVideosComponent } from './manage-videos/manage-videos.component';
 import { EditVideoComponent } from './edit-video/edit-video.component';
+import { LiveSessionComponent } from './live-session/live-session.component';
+import { StudentNavComponent } from './student-nav/student-nav.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { EditVideoComponent } from './edit-video/edit-video.component';
     StudentHomeComponent,
     AddVideoComponent,
     ManageVideosComponent,
-    EditVideoComponent
+    EditVideoComponent,
+    LiveSessionComponent,
+    StudentNavComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

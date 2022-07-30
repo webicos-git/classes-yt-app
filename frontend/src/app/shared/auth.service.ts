@@ -22,7 +22,7 @@ export class AuthService {
       tap((res: HttpResponse<any>) => {
         // the auth tokens will be in the header of this response
         this.setSession(res.body._id, res.headers.get('x-access-token'), res.headers.get('x-refresh-token'));
-        console.log("LOGGED IN!");
+        this.isAdmin(res.body.isAdmin);
       })
     )
   }
@@ -73,6 +73,7 @@ export class AuthService {
     localStorage.removeItem('user-id');
     localStorage.removeItem('x-access-token');
     localStorage.removeItem('x-refresh-token');
+    localStorage.removeItem('isAdmin');
   }
 
   getNewAccessToken() {
@@ -87,5 +88,9 @@ export class AuthService {
         this.setAccessToken(res.headers.get('x-access-token'));
       })
     )
+  }
+
+  isAdmin(admin: string) {
+    localStorage.setItem('isAdmin', admin);
   }
 }

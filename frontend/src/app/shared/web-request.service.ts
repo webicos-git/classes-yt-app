@@ -13,7 +13,6 @@ export class WebRequestService {
     private http: HttpClient
   )
   {
-    console.log("Host",window.location.hostname)
     this.ROOT_URL = `http://${window.location.hostname}:3000`;
   }
 
@@ -25,8 +24,6 @@ export class WebRequestService {
       observe: 'response'
     });
   }
-
-
 
   signup(name: string, password: string,username: string,contact: string,email: string,standard:string,stream:string) {
     // console.log("Data,",data)
@@ -62,5 +59,4 @@ export class WebRequestService {
   updateVideo(payload: Object, id: string) {
     return this.http.patch(`${this.ROOT_URL}/videos/${id}`, payload);
   }
-
 }

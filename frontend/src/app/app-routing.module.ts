@@ -8,6 +8,9 @@ import { StudentHomeComponent } from './student-home/student-home.component';
 import {AddVideoComponent} from './add-video/add-video.component';
 import {ManageVideosComponent} from './manage-videos/manage-videos.component';
 import {EditVideoComponent} from './edit-video/edit-video.component';
+import {StudentNavComponent} from './student-nav/student-nav.component';
+import {LiveSessionComponent} from './live-session/live-session.component';
+import {NotFoundComponent} from './not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -15,10 +18,13 @@ const routes: Routes = [
   {path: 'about-us', component: AboutUsComponent},
   {path: 'home', component: HomeComponent},
   {path: 'register-student', component: RegisterStudentComponent},
-  {path: 'student-home', component: StudentHomeComponent},
+  {path: 'student/recorded-session', component: StudentHomeComponent},
   {path: 'add-video', component: AddVideoComponent},
   {path: 'edit-video/:id', component: EditVideoComponent},
   {path: 'manage-videos', component: ManageVideosComponent},
+  {path: 'student', component: StudentNavComponent},
+  {path: 'student/live-session', component: LiveSessionComponent},
+  {path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
