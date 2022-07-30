@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 import { WebRequestService } from '../shared/web-request.service';
 
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -26,10 +24,10 @@ export class HomeComponent implements OnInit {
         }
       }
       if(user['isAdmin']){
-        // console.log("Admin True");
+        this.router.navigate(['/home']);
       }
       else{
-        this.router.navigate(['/student-home']);
+        this.router.navigate(['/student']);
       }
     });
   }

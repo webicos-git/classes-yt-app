@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 export class MainNavComponent implements OnInit {
 
   isLoggedIn: boolean;
+  isAdmin: boolean;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -31,13 +32,16 @@ export class MainNavComponent implements OnInit {
     auth=this.authService.getAccessToken();
     if (auth!==null) {
       this.isLoggedIn = true;
-    console.log('is logged in if ' + this.isLoggedIn)
-    console.log('auth if' + auth)
+      const tp = localStorage.getItem('isAdmin');
+      // @ts-ignore
+      if (tp === 'true') {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
     }
     else{
       this.isLoggedIn = false;
-    console.log('is logged in else ' + this.isLoggedIn)
-    console.log('auth else' + auth);
     }
   }
 
@@ -47,7 +51,17 @@ export class MainNavComponent implements OnInit {
 
   logout() {
     return this.authService.logout();
+  }
 
+  navigateToHome() {
+    if (this.isAdmin) {
+      console.log('inside if navigate to home');
+      this.router.navigateByUrl('home');
+    }
+    else {
+      console.log('inside else navigate to home');
+      this.router.navigateByUrl('student');
+    }
   }
 
 }

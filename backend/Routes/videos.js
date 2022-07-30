@@ -46,7 +46,8 @@ router.post('/',authenticate,(req, res) => {
         videolink:body.videolink,
         duration:body.duration,
         description:body.description,
-        standard:body.standard
+        standard:body.standard,
+        stream:body.stream,
     });
     try{
     newVideo.save(function(err,result){
@@ -106,6 +107,7 @@ router.patch('/:videoId',authenticate, async (req, res)=>{
         videolink:req.body.videolink,
         duration:req.body.duration,
         standard:req.body.standard,
+        stream:req.body.stream,
     }
    })
    res.json(updatedVideo);
