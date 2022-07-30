@@ -48,6 +48,8 @@ export class LoginComponent implements OnInit {
           }else{
             this.router.navigate(['/student']);
           }
+      } else {
+        console.log(res)
       }
     });
   }

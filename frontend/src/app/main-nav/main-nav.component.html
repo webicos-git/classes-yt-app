@@ -27,7 +27,8 @@
       <span>Unique Tutorials</span>
       <span class="spacer"></span>
       <div class="hide">
-        <a class="nav-link" [routerLink]="isAdmin ? 'home' : 'student'">Home</a>
+        <a class="nav-link" *ngIf="isAdmin" routerLink='home'>Home</a>
+        <a class="nav-link" *ngIf="!isAdmin" routerLink='student'>Student Home</a>
         <a class="nav-link" routerLink="about-us">About Us</a>
         <a class="nav-link" href="#">Contact us</a>
         <mat-icon *ngIf="!isLoggedIn" (click)="login()">login</mat-icon>
