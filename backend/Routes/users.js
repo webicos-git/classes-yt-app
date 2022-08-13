@@ -221,6 +221,13 @@ router.patch('/update/:userId',authenticate, async (req,res)=>{
     }
 })
 
+router.get('/:userId',authenticate, (req, res, next) =>{
+    // console.log("In Videos/VideoId")
+    let user=User.find({$or:[{_id:req.params.userId}]}).then(function(result){
+        console.log(result);
+        res.json(result);
+    })
+})
 
 
 module.exports=router;
