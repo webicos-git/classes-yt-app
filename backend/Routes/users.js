@@ -79,7 +79,7 @@ let verifySession = (req, res, next) => {
 
 
 
-router.get('/', authenticate, (req, res,next) =>{
+router.get('/',authenticate, (req, res,next) =>{
     User.find().then(function(users){
         res.json(users);
     }).catch(next);
@@ -173,7 +173,7 @@ router.get('/', authenticate, (req, res,next) =>{
  * GET /users/me/access-token
  * Purpose: generates and returns an access token
  */
- router.get('/me/access-token', verifySession, (req, res) => {
+router.get('/me/access-token', verifySession, (req, res) => {
     // we know that the user/caller is authenticated and we have the user_id and user object available to us
     req.userObject.generateAccessAuthToken().then((accessToken) => {
         res.header('x-access-token', accessToken).send({ accessToken });
@@ -191,4 +191,36 @@ router.delete('/:userId', authenticate, async (req, res)=>{
    const post= await  User.findOneAndRemove({_id:req.params.userId});
    res.json(post)
 })
+
+
+/**
+ * Update User Infor
+ * patch /users/update/:userId
+ */
+router.patch('/update/:userId',authenticate, async (req,res)=>{
+
+    try{
+        console.log(req.body)
+    const updatedUser=  await User.findOneAndUpdate({_id:req.params.userId},{
+        $set: {
+        
+            contact:req.body.contact, 
+            name:req.body.name,
+            standard:req.body.standard,
+            stream:req.body.stream,
+        }});
+
+        let users=User.find({$or:[{_id:req.params.userId}]}).then(function(result){
+            console.log(result);
+            res.json(result);
+        })
+}
+     
+    catch(err){
+        res.status(404).send(err.message)
+    }
+})
+
+
+
 module.exports=router;

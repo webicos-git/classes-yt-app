@@ -110,12 +110,15 @@ router.patch('/:videoId',authenticate, async (req, res)=>{
         stream:req.body.stream,
     }
    })
-   res.json(updatedVideo);
+   let videos=Video.find({$or:[{_id:req.params.videoId}]}).then(function(result){
+    console.log(result);
+    res.json(result);
+})
 }catch(err){
     res.send(err.message)
 }
 })
-console.log("working")
+// console.log("working")
 router.get('/stdwise/:standard/:stream',authenticate,(req, res,next) =>{
     console.log("Std,",req.params.standard)
     console.log("Stream:",req.params.stream)
