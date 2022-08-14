@@ -32,11 +32,10 @@ export class LiveSessionComponent implements OnInit {
     this.stream = localStorage.getItem('stream');
     return this.webRequestService.getStdWiseLiveSession(this.standard, this.stream).subscribe((res: any) => {
       this.videos = res;
-      console.log(res.length)
-      for (let i=0; i<= res.length; i++) {
-        console.log(this.videos[i].videolink);
-        this.videos[i].videolink = this.videos[i].videolink;
-      }
+      res.forEach((res:any,index:number)=>{
+        console.log(this.videos[index].videolink);
+        this.videos[index].videolink = this.getSafeUrl(this.videos[index].videolink);
+    });
     });
   }
 }
