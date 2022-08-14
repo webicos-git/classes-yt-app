@@ -48,6 +48,10 @@ export class WebRequestService {
     return this.http.post(`${this.ROOT_URL}/videos`, payload);
   }
 
+  addLiveSession(payload: Object) {
+    return this.http.post(`${this.ROOT_URL}/live/`, payload);
+  }
+
   deleteVideo(id: string) {
     return this.http.delete(`${this.ROOT_URL}/videos/${id}`);
   }
@@ -58,5 +62,21 @@ export class WebRequestService {
 
   updateVideo(payload: Object, id: string) {
     return this.http.patch(`${this.ROOT_URL}/videos/${id}`, payload);
+  }
+
+  getStdWiseVideos(standard: string, stream: string) {
+    return this.http.get(`${this.ROOT_URL}/videos/stdwise/${standard}/${stream}`);
+  }
+
+  getStdWiseLiveSession(standard: string, stream: string) {
+    return this.http.get(`${this.ROOT_URL}/live/stdwise/${standard}/${stream}`);
+  }
+
+  getUserInfo(id: string) {
+    return this.http.get(`${this.ROOT_URL}/users/${id}`);
+  }
+
+  updateProfile(payload: Object, id: string) {
+    return this.http.patch(`${this.ROOT_URL}/users/update/${id}`, payload);
   }
 }

@@ -31,6 +31,9 @@ import { EditVideoComponent } from './edit-video/edit-video.component';
 import { LiveSessionComponent } from './live-session/live-session.component';
 import { StudentNavComponent } from './student-nav/student-nav.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AdminLiveSessionComponent } from './admin-live-session/admin-live-session.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     EditVideoComponent,
     LiveSessionComponent,
     StudentNavComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProfileComponent,
+    ContactUsComponent,
+    AdminLiveSessionComponent
   ],
   imports: [
     BrowserModule,

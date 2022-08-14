@@ -23,10 +23,12 @@ export class AuthService {
         // the auth tokens will be in the header of this response
         this.setSession(res.body._id, res.headers.get('x-access-token'), res.headers.get('x-refresh-token'));
         this.isAdmin(res.body.isAdmin);
+        if (res.body.isAdmin === false) {
+          this.setStandardAndStream(res.body.standard, res.body.stream);
+        }
       })
     )
   }
-
 
   signup(name: string, password: string,username: string,contact: string,email: string,standard:string,stream:string) {
     // console.log("DATA In AUTH SERVICE",data)
@@ -39,11 +41,8 @@ export class AuthService {
     )
   }
 
-
-
   logout() {
     this.removeSession();
-
     this.router.navigate(['/login']);
   }
 
@@ -74,6 +73,8 @@ export class AuthService {
     localStorage.removeItem('x-access-token');
     localStorage.removeItem('x-refresh-token');
     localStorage.removeItem('isAdmin');
+    localStorage.removeItem('stream');
+    localStorage.removeItem('standard');
   }
 
   getNewAccessToken() {
@@ -92,5 +93,10 @@ export class AuthService {
 
   isAdmin(admin: string) {
     localStorage.setItem('isAdmin', admin);
+  }
+
+  setStandardAndStream(standard: string, stream: string) {
+    localStorage.setItem('stream', stream);
+    localStorage.setItem('standard', standard);
   }
 }

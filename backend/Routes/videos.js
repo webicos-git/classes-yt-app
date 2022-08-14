@@ -67,7 +67,7 @@ router.post('/',authenticate,(req, res) => {
     }
 });
 
-router.get('/',authenticate,(req, res,next) =>{
+router.get('/',(req, res,next) =>{
     Video.find().then(function(users){
         res.json(users);
     }).catch(next);
@@ -118,6 +118,7 @@ router.patch('/:videoId',authenticate, async (req, res)=>{
     res.send(err.message)
 }
 })
+
 // console.log("working")
 router.get('/stdwise/:standard/:stream',authenticate,(req, res,next) =>{
     console.log("Std,",req.params.standard)
@@ -126,7 +127,6 @@ router.get('/stdwise/:standard/:stream',authenticate,(req, res,next) =>{
         res.json(videos);
     }).catch(next);
     // res.send("Working")
-   
 });
 
 module.exports=router;
