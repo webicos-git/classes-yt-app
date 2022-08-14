@@ -59,4 +59,8 @@ export class WebRequestService {
   updateVideo(payload: Object, id: string) {
     return this.http.patch(`${this.ROOT_URL}/videos/${id}`, payload);
   }
+
+  getStdWiseVideos(standard: string, stream: string) {
+    return this.http.get(`${this.ROOT_URL}/videos/stdwise/${standard}/${stream}`);
+  }
 }

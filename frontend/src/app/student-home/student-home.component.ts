@@ -13,6 +13,8 @@ export class StudentHomeComponent implements OnInit {
 
   videos: any = []
   unsafeUrl: any
+  standard: string;
+  stream: string;
 
   constructor(
     private authService: AuthService,
@@ -27,8 +29,13 @@ export class StudentHomeComponent implements OnInit {
     var auth=null;
     this.unsafeUrl = this.getSafeUrl('https://www.youtube.com/embed/tI_sdbnSw7c')
     auth=this.authService.getAccessToken();
-    if (auth!==null) {
+    this.standard = localStorage.getItem('standard');
+    this.stream = localStorage.getItem('stream');
 
+    if (auth!==null) {
+      this.webRequestService.getStdWiseVideos(this.standard, this.stream).subscribe((res: any) => {
+        console.log(res);
+      })
     }
     else{
       this.router.navigate(['/login']);
@@ -40,7 +47,9 @@ export class StudentHomeComponent implements OnInit {
   }
 
   getVideos() {
-    return this.webRequestService.getVideos().subscribe((res: any) => {
+    this.standard = localStorage.getItem('standard');
+    this.stream = localStorage.getItem('stream');
+    return this.webRequestService.getStdWiseVideos(this.standard, this.stream).subscribe((res: any) => {
       this.videos = res;
       for (let i=0; i<= res.length; i++) {
         this.videos[i].videolink = this.getSafeUrl(this.videos[i].videolink)
