@@ -204,10 +204,9 @@ router.patch('/update/:userId',authenticate, async (req,res)=>{
     const updatedUser=  await User.findOneAndUpdate({_id:req.params.userId},{
         $set: {
         
-            contact:req.body.contact, 
-            name:req.body.name,
-            standard:req.body.standard,
-            stream:req.body.stream,
+            email:req.body.email,
+            contact:req.body.contact,
+            name:req.body.name
         }});
 
         let users=User.find({$or:[{_id:req.params.userId}]}).then(function(result){

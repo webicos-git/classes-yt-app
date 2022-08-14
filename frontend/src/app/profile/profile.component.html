@@ -7,9 +7,8 @@
       <mat-label>Name</mat-label>
       <input
         matInput
-        ngModel
+        [ngModel]="this.name"
         name="name"
-        #nameField="ngModel"
         placeholder="Enter Student Name"
         required
       >
@@ -20,9 +19,8 @@
       <mat-label>Username</mat-label>
       <input
         matInput
-        ngModel
+        [ngModel]="this.username"
         name="username"
-        #usernameField="ngModel"
         disabled
         placeholder="Enter Student Username">
       <mat-icon matSuffix>person</mat-icon>
@@ -33,9 +31,8 @@
       <input
         type="email"
         matInput
-        ngModel
+        [ngModel]="this.email"
         name="email"
-        #emailField="ngModel"
         placeholder="Enter Student E-mail"
         required
       >
@@ -45,12 +42,13 @@
     <mat-form-field appearance="outline">
       <mat-label>Contact Number</mat-label>
       <input
-        type="number"
-        minlength="10"
+        type="text"
+        minLength="10"
+        maxLength="10"
+        pattern="[0-9]*"
         matInput
-        ngModel
+        [ngModel]="this.contact"
         name="contact"
-        #contactField="ngModel"
         placeholder="Enter Student Phone No"
         required
       >
@@ -63,9 +61,8 @@
         type="number"
         maxlength="2"
         matInput
-        ngModel
+        [ngModel]="this.standard"
         name="standard"
-        #standardField="ngModel"
         placeholder="Enter Student Standard"
         required
         disabled
@@ -75,8 +72,8 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Select Stream</mat-label>
-      <mat-select [(ngModel)]="selectedStreamValue" name="stream" >
-        <mat-option *ngFor="let stream of streams" [value]="stream.value">
+      <mat-select [(ngModel)]="this.stream" name="stream">
+        <mat-option *ngFor="let stream of streams" [value]="stream.value" disabled>
           {{stream.viewValue}}
         </mat-option>
       </mat-select>

@@ -13,6 +13,7 @@ import {LiveSessionComponent} from './live-session/live-session.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
+import {AdminLiveSessionComponent} from './admin-live-session/admin-live-session.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'manage-videos', component: ManageVideosComponent},
   {path: 'student', component: StudentNavComponent},
   {path: 'student/live-session', component: LiveSessionComponent},
+  {path: 'admin/live-session', component: AdminLiveSessionComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: '**', component: NotFoundComponent},

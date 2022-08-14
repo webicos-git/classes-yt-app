@@ -33,6 +33,7 @@ import { StudentNavComponent } from './student-nav/student-nav.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AdminLiveSessionComponent } from './admin-live-session/admin-live-session.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     StudentNavComponent,
     NotFoundComponent,
     ProfileComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    AdminLiveSessionComponent
   ],
   imports: [
     BrowserModule,
