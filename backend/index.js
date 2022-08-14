@@ -33,4 +33,8 @@ app.use('/users',userRoutes);
 const videoRoutes = require('./Routes/videos')
 app.use('/videos',videoRoutes);
 
+
+const live_session = require('./Routes/live')
+app.use('/live',live_session);
+
 app.listen(3000 ,()=>{console.log("Server listening on port 3000")});

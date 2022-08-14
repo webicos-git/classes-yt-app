@@ -1,7 +1,8 @@
 const express=require('express')
 const Video=require('../Models/Video')
-const User=require('../Models/User')
+const Live_Session=require('../Models/Live_Sessions')
 const jwt = require('jsonwebtoken');
+const User=require('../Models/User')
 
 
 router=express.Router();
@@ -31,15 +32,7 @@ router.post('/',authenticate,(req, res) => {
     let body = req.body;
 
     console.log("BODY", body);
-    // let isFalse=false;
-    // if (body.hasOwnProperty('isAdmin')){
-    //     isFalse=req.body['isAdmin'];
-    // }
-    // let standard=null;
-    // if (body.hasOwnProperty('standard')){
-    //     standard=req.body['standard'];
-    // }
-    let newVideo = new Video({
+    let newVideo = new Live_Session({
         title: body.title,
         subject:body.subject,
         teacher: body.teacher, 
@@ -67,8 +60,8 @@ router.post('/',authenticate,(req, res) => {
     }
 });
 
-router.get('/',(req, res,next) =>{
-    Video.find().then(function(users){
+router.get('/',authenticate,(req, res,next) =>{
+    Live_Session.find().then(function(users){
         res.json(users);
     }).catch(next);
     // res.send("Working")
@@ -76,15 +69,15 @@ router.get('/',(req, res,next) =>{
 });
 
 router.get('/:subject',authenticate, (req, res, next) =>{
-    let videos=Video.find({$or:[{subject:req.params.subject}]}).then(function(result){
+    let videos=Live_Session.find({$or:[{subject:req.params.subject}]}).then(function(result){
         console.log(result);
         res.json(result);
     })
 
 })
-router.get('/video/:videoId',authenticate, (req, res, next) =>{
+router.get('/live/:videoId',authenticate, (req, res, next) =>{
     console.log("In Videos/VideoId")
-    let videos=Video.find({$or:[{_id:req.params.videoId}]}).then(function(result){
+    let videos=Live_Session.find({$or:[{_id:req.params.videoId}]}).then(function(result){
         console.log(result);
         res.json(result);
     })
@@ -92,14 +85,14 @@ router.get('/video/:videoId',authenticate, (req, res, next) =>{
 
 router.delete('/:videoId', authenticate, async (req, res)=>{
     console.log(req.params.videoId)
-   const video= await  Video.findOneAndRemove({_id:req.params.videoId});
+   const video= await  Live_Session.findOneAndRemove({_id:req.params.videoId});
    res.json(video)
 })
 
 
 router.patch('/:videoId',authenticate, async (req, res)=>{
     try {
-   const updatedVideo= await Video.findOneAndUpdate({_id:req.params.videoId},{
+   const updatedVideo= await Live_Session.findOneAndUpdate({_id:req.params.videoId},{
     $set: {title:req.body.title, 
         description:req.body.description,
         subject:req.body.subject,
@@ -110,7 +103,7 @@ router.patch('/:videoId',authenticate, async (req, res)=>{
         stream:req.body.stream,
     }
    })
-   let videos=Video.find({$or:[{_id:req.params.videoId}]}).then(function(result){
+   let videos=Live_Session.find({$or:[{_id:req.params.videoId}]}).then(function(result){
     console.log(result);
     res.json(result);
 })
@@ -118,15 +111,15 @@ router.patch('/:videoId',authenticate, async (req, res)=>{
     res.send(err.message)
 }
 })
-
 // console.log("working")
 router.get('/stdwise/:standard/:stream',authenticate,(req, res,next) =>{
     console.log("Std,",req.params.standard)
     console.log("Stream:",req.params.stream)
-    Video.find({$and:[{standard: parseInt(req.params.standard)},{stream:req.params.stream}]}).then(function(videos){
+    Live_Session.find({$and:[{standard: parseInt(req.params.standard)},{stream:req.params.stream}]}).then(function(videos){
         res.json(videos);
     }).catch(next);
     // res.send("Working")
+   
 });
 
 module.exports=router;
