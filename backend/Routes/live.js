@@ -112,10 +112,10 @@ router.patch('/:videoId',authenticate, async (req, res)=>{
 }
 })
 // console.log("working")
-router.get('/stdwise/:standard/:stream',authenticate,(req, res,next) =>{
+router.get('/stdwise/:standard/:stream',authenticate, async(req, res,next) =>{
     console.log("Std,",req.params.standard)
     console.log("Stream:",req.params.stream)
-    Live_Session.find({$and:[{standard: parseInt(req.params.standard)},{stream:req.params.stream}]}).then(function(videos){
+    await Live_Session.find({$and:[{standard: parseInt(req.params.standard)},{stream:req.params.stream}]}).then(function(videos){
         res.json(videos);
     }).catch(next);
     // res.send("Working")

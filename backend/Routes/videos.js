@@ -125,7 +125,9 @@ router.get('/stdwise/:standard/:stream',authenticate,(req, res,next) =>{
     console.log("Stream:",req.params.stream)
     Video.find({$and:[{standard: parseInt(req.params.standard)},{stream:req.params.stream}]}).then(function(videos){
         res.json(videos);
-    }).catch(next);
+    }).catch((next)=>{
+        console.log("Error:",next)
+    });
     // res.send("Working")
 });
 
