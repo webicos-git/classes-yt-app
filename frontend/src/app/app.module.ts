@@ -34,6 +34,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AdminLiveSessionComponent } from './admin-live-session/admin-live-session.component';
+import { ManageLiveSessionsComponent } from './manage-live-sessions/manage-live-sessions.component';
+import { UpdateLiveSessionComponent } from './update-live-session/update-live-session.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { AdminLiveSessionComponent } from './admin-live-session/admin-live-sessi
     NotFoundComponent,
     ProfileComponent,
     ContactUsComponent,
-    AdminLiveSessionComponent
+    AdminLiveSessionComponent,
+    ManageLiveSessionsComponent,
+    UpdateLiveSessionComponent
   ],
   imports: [
     BrowserModule,
