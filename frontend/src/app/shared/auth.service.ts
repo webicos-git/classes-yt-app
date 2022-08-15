@@ -94,6 +94,15 @@ export class AuthService {
   isAdmin(admin: string) {
     localStorage.setItem('isAdmin', admin);
   }
+  checkIsAdmin():boolean{
+    const isAdmin=localStorage.getItem('isAdmin')
+    if(isAdmin=='true'){
+      return true
+    }
+    else{
+      return false
+    }
+  }
 
   setStandardAndStream(standard: string, stream: string) {
     localStorage.setItem('stream', stream);
