@@ -79,4 +79,25 @@ export class WebRequestService {
   updateProfile(payload: Object, id: string) {
     return this.http.patch(`${this.ROOT_URL}/users/update/${id}`, payload);
   }
+
+  getLiveSessions() {
+    return this.http.get(`${this.ROOT_URL}/live/`);
+  }
+
+  getLiveSessionById(id: string) {
+    return this.http.get(`${this.ROOT_URL}/live/liveVideo/${id}`);
+  }
+
+  deleteLiveSession(id: string) {
+    return this.http.delete(`${this.ROOT_URL}/live/${id}`);
+  }
+
+  updateLiveSession(id: string, payload: Object) {
+    return this.http.patch(`${this.ROOT_URL}/live/${id}`, payload);
+  }
+
+
+  isLoggedIn(){
+    return !!localStorage.getItem('x-access-token')
+  }
 }

@@ -75,9 +75,10 @@ router.get('/:subject',authenticate, (req, res, next) =>{
     })
 
 })
-router.get('/live/:videoId',authenticate, (req, res, next) =>{
-    console.log("In Videos/VideoId")
-    let videos=Live_Session.find({$or:[{_id:req.params.videoId}]}).then(function(result){
+router.get('/liveVideo/:videoId',authenticate, (req, res, next) =>{
+    console.log("In liveVideo/VideoId",req.params.videoId)
+
+    let videos=Live_Session .find({$or:[{_id:req.params.videoId}]}).then(function(result){
         console.log(result);
         res.json(result);
     })
