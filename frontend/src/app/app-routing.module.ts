@@ -17,22 +17,23 @@ import {AdminLiveSessionComponent} from './admin-live-session/admin-live-session
 import {ManageLiveSessionsComponent} from './manage-live-sessions/manage-live-sessions.component';
 import {UpdateLiveSessionComponent} from './update-live-session/update-live-session.component';
 import {AuthGuard} from './guard/auth.guard';
+import {AdminGuard} from './guard/admin.guard';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: 'login', component: LoginComponent},
   {path: 'about-us', component: AboutUsComponent},
-  {path: 'home', component: HomeComponent,canActivate:[AuthGuard]},
-  {path: 'register-student', component: RegisterStudentComponent,canActivate:[AuthGuard]},
-  {path: 'add-video', component: AddVideoComponent,canActivate:[AuthGuard]},
-  {path: 'edit-video/:id', component: EditVideoComponent,canActivate:[AuthGuard]},
-  {path: 'manage-videos', component: ManageVideosComponent,canActivate:[AuthGuard]},
+  {path: 'home', component: HomeComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path: 'register-student', component: RegisterStudentComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path: 'add-video', component: AddVideoComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path: 'edit-video/:id', component: EditVideoComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path: 'manage-videos', component: ManageVideosComponent,canActivate:[AuthGuard,AdminGuard]},
   {path: 'student', component: StudentNavComponent,canActivate:[AuthGuard]},
   {path: 'student/recorded-session', component: StudentHomeComponent,canActivate:[AuthGuard]},
   {path: 'student/live-session', component: LiveSessionComponent,canActivate:[AuthGuard]},
-  {path: 'admin/live-session', component: AdminLiveSessionComponent,canActivate:[AuthGuard]},
-  {path: 'admin/manage-live-session', component: ManageLiveSessionsComponent,canActivate:[AuthGuard]},
-  {path: 'admin/update-live-session/:id', component: UpdateLiveSessionComponent,canActivate:[AuthGuard]},
+  {path: 'admin/live-session', component: AdminLiveSessionComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path: 'admin/manage-live-session', component: ManageLiveSessionsComponent,canActivate:[AuthGuard,AdminGuard]},
+  {path: 'admin/update-live-session/:id', component: UpdateLiveSessionComponent,canActivate:[AuthGuard,AdminGuard]},
   {path: 'profile', component: ProfileComponent,canActivate:[AuthGuard]},
   {path: 'contact-us', component: ContactUsComponent},
   {path: '**', component: NotFoundComponent},
