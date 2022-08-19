@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {WebRequestService} from '../shared/web-request.service';
 import {DomSanitizer} from '@angular/platform-browser';
 
+
+
 @Component({
   selector: 'app-manage-videos',
   templateUrl: './manage-videos.component.html',
@@ -13,6 +15,10 @@ export class ManageVideosComponent implements OnInit {
 
   videos: any = []
   unsafeUrl: any
+
+  subject: string
+  std: string
+  stream: string
 
   constructor(
     private authService: AuthService,
@@ -24,14 +30,6 @@ export class ManageVideosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var auth=null;
-    auth=this.authService.getAccessToken();
-    if (auth!==null) {
-
-    }
-    else{
-      this.router.navigate(['/login']);
-    }
   }
 
   getSafeUrl(url: string) {
