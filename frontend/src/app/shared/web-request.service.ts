@@ -96,6 +96,9 @@ export class WebRequestService {
     return this.http.patch(`${this.ROOT_URL}/live/${id}`, payload);
   }
 
+  getubjectWiseRecordedSession(standard: string, stream: string, subject: string) {
+    return this.http.get(`${this.ROOT_URL}/videos/subject-wise/${standard}/${stream}/${subject}`);
+  }
 
   isLoggedIn(){
     return !!localStorage.getItem('x-access-token')
