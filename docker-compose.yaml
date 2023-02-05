@@ -1,15 +1,33 @@
 version: '2' # specify docker-compose version
 # Define the services/containers to be run
 services:
+  mongo:
+    image: mongo:jammy
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: classes_yt_app
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    #restart: always
+    volumes:
+      - /classes_yt_app_mongo:/data/db
+    ports:
+      - "27017:27017"
   frontend: #name of the first service
     build: frontend # specify the directory of the Dockerfile
+    restart: always
     ports:
-      - "80:4200" # specify port forewarding
+      - "80:80" # specify port forewarding
     #container_name: Classes-container
     #restart: always
   backend: #name of the second service
     build: backend # specify the directory of the Dockerfile
+    restart: always
     ports:
       - "3000:3000" #specify ports forewarding
+    depends_on:
+      - mongo
                                                                                                                                                                                                                                                                                                                                                                                                                             
 
+# volumes:  
+  # /classes_yt_app_mongo:/data/db
